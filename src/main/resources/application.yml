@@ -1,0 +1,87 @@
+server:
+  port: 9998
+  shutdown: graceful
+  servlet:
+    context-path: /api
+  compression:
+    enabled: true
+    min-response-size: 1KB
+logging:
+  level:
+    root: WARN
+    org.springframework.boot.web.embedded.tomcat: INFO
+    org.springframework.security: INFO
+    org.springframework.transaction.interceptor: ERROR
+    com.jinelei: ERROR
+management:
+  influx:
+    metrics:
+      export:
+        enabled: false
+spring:
+  application:
+    name: IoTGenius
+  devtools:
+    restart:
+      enabled: false
+  lifecycle:
+    timeout-per-shutdown-phase: 10s
+  profiles:
+    active: dev
+  banner:
+    charset: UTF-8
+    location: classpath:banner
+  jpa:
+    open-in-view: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss.SSS
+  threads:
+    virtual:
+      enabled: false
+app:
+  store:
+    path: /root/service/spirit/data
+  mqtt:
+    enabled: false
+    qos: 1
+    alias:
+      deviceCode: 'deviceCode'
+      deviceState: 'state'
+      timestamp: 'timestamp'
+    topics:
+      mixin:
+        enabled: false
+        name: /dev/mixin
+        qos: 1
+      state:
+        enabled: false
+        name: /dev/state
+        qos: 1
+      parameter:
+        enabled: false
+        name: /dev/msg
+        qos: 1
+      connect:
+        enabled: false
+        name: /dev/conn
+        qos: 1
+  security:
+    jwt:
+      key: 'CA332CDA09DF45B887407EA5CB53B638CA091BC1290'
+      header: 'Authorization'
+      url: '/user/login'
+    ignore:
+      - '/'
+      - '/index'
+      - '/user/login'
+      - '/store/downloadById/**'
+      - '/store/downloadByName/**'
+      - '/docs'
+      - '/swagger-ui'
+springdoc:
+  api-docs:
+    enabled: false
+    path: /docs
+  swagger-ui:
+    enabled: false
+    path: /swagger-ui
