@@ -4,9 +4,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Slice;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +15,7 @@ import java.util.Optional;
  * @Date: 2024/3/12 22:25
  * @Version: 1.0.0
  */
+@SuppressWarnings("unused")
 @ApiResponse(description = "分页响应")
 @Getter
 @ToString(callSuper = true)
@@ -40,20 +38,20 @@ public class PageView<T> extends ListView<T> {
         this.page = Optional.ofNullable(page).orElse(0);
         this.size = Optional.ofNullable(size).orElse(0);
     }
-
-    public static <T> PageView<T> success(Page<T> data) {
-        return new PageView<>(null, null,
-                Optional.of(data).map(Slice::getContent).orElse(null),
-                Optional.of(data).map(Page::getTotalElements).orElse(null),
-                Optional.of(data).map(Slice::getPageable).map(Pageable::getPageNumber).orElse(null),
-                Optional.of(data).map(Slice::getPageable).map(Pageable::getPageSize).orElse(null));
-    }
-
-    public static <T> PageView<T> success(String message, Page<T> data) {
-        return new PageView<>(null, message,
-                Optional.of(data).map(Slice::getContent).orElse(null),
-                Optional.of(data).map(Page::getTotalElements).orElse(null),
-                Optional.of(data).map(Slice::getPageable).map(Pageable::getPageNumber).orElse(null),
-                Optional.of(data).map(Slice::getPageable).map(Pageable::getPageSize).orElse(null));
-    }
+//
+//    public static <T> PageView<T> success(Page<T> data) {
+//        return new PageView<>(null, null,
+//                Optional.of(data).map(Slice::getContent).orElse(null),
+//                Optional.of(data).map(Page::getTotalElements).orElse(null),
+//                Optional.of(data).map(Slice::getPageable).map(Pageable::getPageNumber).orElse(null),
+//                Optional.of(data).map(Slice::getPageable).map(Pageable::getPageSize).orElse(null));
+//    }
+//
+//    public static <T> PageView<T> success(String message, Page<T> data) {
+//        return new PageView<>(null, message,
+//                Optional.of(data).map(Slice::getContent).orElse(null),
+//                Optional.of(data).map(Page::getTotalElements).orElse(null),
+//                Optional.of(data).map(Slice::getPageable).map(Pageable::getPageNumber).orElse(null),
+//                Optional.of(data).map(Slice::getPageable).map(Pageable::getPageSize).orElse(null));
+//    }
 }

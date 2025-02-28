@@ -6,12 +6,14 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
+
 /**
  * @Author: jinelei
  * @Description:
  * @Date: 2023/07/25
  * @Version: 1.0.0
  */
+@SuppressWarnings("unused")
 public class InstantHelper {
     public static Instant parseInstant(String time) {
         if (time == null || !StringUtils.hasLength(time.trim())) {
@@ -28,6 +30,7 @@ public class InstantHelper {
             return null;
         }
     }
+
     public static Instant parseInstantWithDefault(String time) {
         if (!StringUtils.hasLength(time) || time.trim().isEmpty()) {
             return Instant.now();

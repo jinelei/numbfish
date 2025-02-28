@@ -15,6 +15,7 @@ import java.util.Optional;
  * @Date: 2024/3/12 22:25
  * @Version: 1.0.0
  */
+@SuppressWarnings("unused")
 @ApiResponse(description = "列表响应")
 @Getter
 @ToString(callSuper = true)

@@ -1,7 +1,5 @@
 package com.jinelei.iotgenius.helper;
 
-import cn.jinelei.core.service.anno.Keywords;
-import cn.jinelei.core.service.anno.QueryField;
 import org.springframework.util.ObjectUtils;
 
 import java.lang.reflect.Field;
@@ -17,8 +15,6 @@ import java.util.function.Predicate;
  * @Version: 1.0.0
  */
 public class FieldHelper {
-    public static Predicate<Field> isKeywordField = m -> m.isAnnotationPresent(Keywords.class);
-    public static Predicate<Field> isQueryField = m -> m.isAnnotationPresent(QueryField.class);
     /**
      * 当前类型
      */

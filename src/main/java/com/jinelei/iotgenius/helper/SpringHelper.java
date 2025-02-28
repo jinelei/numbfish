@@ -14,20 +14,24 @@ import java.lang.annotation.Annotation;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+
 /**
  * @Author: jinelei
  * @Description:
  * @Date: 2023/4/11
  * @Version: 1.0.0
  */
+@SuppressWarnings("unused")
 @Component
 public class SpringHelper implements ApplicationContextAware {
     protected static final Logger logger = LoggerFactory.getLogger(SpringHelper.class);
     protected static ApplicationContext context = null;
+
     @Override
     public void setApplicationContext(@NonNull ApplicationContext applicationContext) throws BeansException {
         context = applicationContext;
     }
+
     /**
      * 获取beans
      *
@@ -38,6 +42,7 @@ public class SpringHelper implements ApplicationContextAware {
     public static <T> Optional<Collection<T>> getBeans(@NonNull Class<T> clazz) {
         return Optional.ofNullable(context).map(c -> c.getBeansOfType(clazz).values());
     }
+
     /**
      * 获取bean
      *
@@ -48,6 +53,7 @@ public class SpringHelper implements ApplicationContextAware {
     public static <T> Optional<T> getBean(@NonNull Class<T> clazz) {
         return Optional.ofNullable(context).map(c -> c.getBean(clazz));
     }
+
     /**
      * 获取bean
      *
@@ -59,6 +65,7 @@ public class SpringHelper implements ApplicationContextAware {
     public static <T> Optional<T> getBean(@NonNull String name, @NonNull Class<T> clazz) {
         return Optional.ofNullable(context).map(c -> c.getBean(name, clazz));
     }
+
     /**
      * 获取bean
      *
@@ -69,6 +76,7 @@ public class SpringHelper implements ApplicationContextAware {
     public static Optional<Object> getBeanByName(@NonNull String beanName) throws BeansException {
         return Optional.ofNullable(context).map(c -> c.getBean(beanName));
     }
+
     /**
      * 通过注解获取beanNames
      *
@@ -78,6 +86,7 @@ public class SpringHelper implements ApplicationContextAware {
     public static Optional<List<String>> getBeanNamesForAnnotation(Class<? extends Annotation> clazz) {
         return Optional.ofNullable(context).map(c -> c.getBeanNamesForAnnotation(clazz)).map(List::of);
     }
+
     /**
      * 获取项目路径
      *

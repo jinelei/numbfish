@@ -8,6 +8,7 @@ import java.util.Optional;
  * @Date: 2024/3/13 21:55
  * @Version: 1.0.0
  */
+@SuppressWarnings("unused")
 public interface Feature {
     String getFeature();
 

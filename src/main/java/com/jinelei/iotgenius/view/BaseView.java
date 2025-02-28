@@ -17,6 +17,7 @@ import java.util.Optional;
  * @Date: 2023/7/21
  * @Version: 1.0.0
  */
+@SuppressWarnings("unused")
 @ApiResponse(description = "基础响应")
 @Getter
 @ToString

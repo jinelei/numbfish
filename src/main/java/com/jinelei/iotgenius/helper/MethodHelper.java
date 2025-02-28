@@ -1,7 +1,5 @@
 package com.jinelei.iotgenius.helper;
 
-import cn.jinelei.core.service.anno.Keywords;
-import cn.jinelei.core.service.anno.QueryField;
 import org.springframework.util.ObjectUtils;
 
 import java.lang.reflect.InvocationTargetException;
@@ -15,17 +13,17 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
 /**
  * @Author: jinelei
  * @Description:
  * @Date: 2023/7/13
  * @Version: 1.0.0
  */
+@SuppressWarnings("unused")
 public class MethodHelper {
     public static Predicate<Method> isPublicMethod = m -> Modifier.isPublic(m.getModifiers());
     public static Predicate<Method> isGetterMethod = m -> m.getParameterCount() == 0 && !m.getName().equals("getClass") && (m.getName().startsWith("get") || m.getName().startsWith("is"));
-    public static Predicate<Method> isKeywordMethod = m -> m.isAnnotationPresent(Keywords.class);
-    public static Predicate<Method> isQueryFieldMethod = m -> m.isAnnotationPresent(QueryField.class);
     public static Function<Method, String> methodToField = m -> m.getName().startsWith("get") && m.getName().length() > 3 ? m.getName().substring(3, 4).toLowerCase() + m.getName().substring(4) : m.getName();
     /**
      * 当前类型
@@ -35,13 +33,16 @@ public class MethodHelper {
      * 截止类型
      */
     private final Class<?> endClazz;
+
     public MethodHelper(Class<?> curClazz, Class<?> endClazz) {
         this.curClazz = curClazz;
         this.endClazz = endClazz;
     }
+
     public static MethodHelper of(Class<?> curClazz, Class<?> endClazz) {
         return new MethodHelper(curClazz, endClazz);
     }
+
     /**
      * 解析所有的方法
      *
@@ -50,6 +51,7 @@ public class MethodHelper {
     public Stream<Method> getPublicMethods() {
         return Arrays.stream(curClazz.getMethods());
     }
+
     /**
      * 解析所有的方法
      *
@@ -59,6 +61,7 @@ public class MethodHelper {
     public List<Method> getPublicMethods(final Predicate<Method> predicate) {
         return Arrays.stream(curClazz.getMethods()).filter(predicate).collect(Collectors.toList());
     }
+
     /**
      * 递归所有的方法
      *
@@ -75,6 +78,7 @@ public class MethodHelper {
         }
         return fields;
     }
+
     /**
      * 解析方法值
      *
