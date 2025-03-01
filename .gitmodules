@@ -1,0 +1,6 @@
+[submodule "iotgenius-common"]
+	path = iotgenius-common
+	url = git@github.com:jinelei/iotgenius-common.git
+[submodule "iotgenius-auth"]
+	path = iotgenius-auth
+	url = git@github.com:jinelei/iotgenius-auth.git
