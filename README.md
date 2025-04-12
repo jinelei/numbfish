@@ -12,5 +12,5 @@ IoTGenius 采集精灵是一款基于 IoTGenius 平台的物联网采集软件�
 
 ## 模块说明
 
-- `iotgenius-common`: 公共模块
-- `iotgenius-auth`: 认证模块
+- `numbfish-common`: 公共模块
+- `numbfish-auth`: 认证模块
