@@ -7,3 +7,6 @@
 [submodule "numbfish-acquisition"]
 	path = numbfish-acquisition
 	url = git@github.com:jinelei/numbfish-acquisition.git
+[submodule "numbfish-device"]
+	path = numbfish-device
+	url = git@github.com:jinelei/numbfish-device.git
