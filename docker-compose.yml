@@ -1,0 +1,29 @@
+version: '3'
+services:
+  numbfish-redis:
+    image: redis
+    ports:
+      - "6379:6379"
+  numbfish-mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+  numbfish-auth:
+    image: numbfish-auth
+    depends_on:
+      - numbfish-redis
+      - numbfish-mysql
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    
