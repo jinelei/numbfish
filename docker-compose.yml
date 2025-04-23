@@ -13,7 +13,7 @@ services:
     environment:
       - REDIS_PASSWORD=iotG@2025
     ports:
-      - 8379:6379
+      - 6379:6379
     restart: unless-stopped
 
   numbfish-mysql:
@@ -26,7 +26,7 @@ services:
       - MYSQL_DATABASE=iotgenius
       - MYSQL_PASSWORD=iotG@2025
     ports:
-      - 8306:3306
+      - 3306:3306
     restart: unless-stopped
 
   numbfish-auth:
@@ -37,6 +37,20 @@ services:
       - numbfish-mysql
     networks:
       - numbfish_network
+    environment:
+      - SERVER_PORT=9999
+      - KNIFE4J_ENABLED=true
+      - KNIFE4J_USERNAME=numbfish
+      - KNIFE4J_PASSWORD=numbfish
+      - MYSQL_HOST=numbfish-mysql
+      - MYSQL_PORT=3306
+      - MYSQL_SCHEMA=iotgenius
+      - MYSQL_USERNAME=root
+      - MYSQL_PASSWORD=iotG@2025
+      - REDIS_HOST=numbfish-redis
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=iotG@2025
+      - REDIS_DATABASE=0
     ports:
       - 9999:9999
     restart: unless-stopped
