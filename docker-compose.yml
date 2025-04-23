@@ -1,29 +1,42 @@
-version: '3'
+version: "3.8"
+
+networks:
+  numbfish_network:
+    driver: bridge
+
 services:
   numbfish-redis:
+    container_name: numbfish-redis
     image: redis
-    ports:
-      - "6379:6379"
-  numbfish-mysql:
-    image: mysql:latest
+    networks:
+      - numbfish_network
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: mydb
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
+      - REDIS_PASSWORD=iotG@2025
     ports:
-      - "3306:3306"
+      - 8379:6379
+    restart: unless-stopped
+
+  numbfish-mysql:
+    container_name: numbfish-mysql
+    image: mysql
+    networks:
+      - numbfish_network
+    environment:
+      - MYSQL_ROOT_PASSWORD=iotG@2025
+      - MYSQL_DATABASE=iotgenius
+      - MYSQL_PASSWORD=iotG@2025
+    ports:
+      - 8306:3306
+    restart: unless-stopped
+
   numbfish-auth:
+    container_name: numbfish-auth
     image: numbfish-auth
     depends_on:
       - numbfish-redis
       - numbfish-mysql
-    environment:
-      REDIS_HOST: redis
-      REDIS_PORT: 6379
-      MYSQL_HOST: mysql
-      MYSQL_PORT: 3306
-      MYSQL_DATABASE: mydb
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
-    
+    networks:
+      - numbfish_network
+    ports:
+      - 9999:9999
+    restart: unless-stopped
