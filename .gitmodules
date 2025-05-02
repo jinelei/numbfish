@@ -10,3 +10,6 @@
 [submodule "numbfish-equipment"]
 	path = numbfish-equipment
 	url = git@github.com:jinelei/numbfish-equipment.git
+[submodule "numbfish-authorization"]
+	path = numbfish-authorization
+	url = git@github.com:jinelei/numbfish-authorization.git
