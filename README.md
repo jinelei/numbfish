@@ -14,3 +14,5 @@ Numbfish 采集精灵是一款物联网采集软件，用于采集传感器数�
 
 - `numbfish-common`: 公共模块
 - `numbfish-auth`: 认证模块
+- `numbfish-equipment`: 设备模块
+- `numbfish-acquisition`: 采集模块
