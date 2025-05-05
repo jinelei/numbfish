@@ -29,16 +29,16 @@ services:
       - 3306:3306
     restart: unless-stopped
 
-  numbfish-auth:
-    container_name: numbfish-auth
-    image: numbfish-auth
+  numbfish-authorization:
+    container_name: numbfish-authorization
+    image: numbfish-authorization
     depends_on:
       - numbfish-redis
       - numbfish-mysql
     networks:
       - numbfish_network
     environment:
-      - SERVER_PORT=9999
+      - SERVER_PORT=9998
       - KNIFE4J_ENABLED=true
       - KNIFE4J_USERNAME=numbfish
       - KNIFE4J_PASSWORD=numbfish
@@ -52,5 +52,5 @@ services:
       - REDIS_PASSWORD=iotG@2025
       - REDIS_DATABASE=0
     ports:
-      - 9999:9999
+      - 9998:9998
     restart: unless-stopped
