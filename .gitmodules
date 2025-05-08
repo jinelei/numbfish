@@ -1,9 +1,6 @@
 [submodule "numbfish-common"]
 	path = numbfish-common
 	url = git@github.com:jinelei/numbfish-common.git
-[submodule "numbfish-auth"]
-	path = numbfish-auth
-	url = git@github.com:jinelei/numbfish-auth.git
 [submodule "numbfish-acquisition"]
 	path = numbfish-acquisition
 	url = git@github.com:jinelei/numbfish-acquisition.git
